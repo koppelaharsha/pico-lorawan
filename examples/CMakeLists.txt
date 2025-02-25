@@ -1,0 +1,5 @@
+# add_subdirectory("default_dev_eui")
+# add_subdirectory("hello_abp")
+# add_subdirectory("hello_otaa")
+# add_subdirectory("otaa_temperature_led")
+add_subdirectory("smart_grid")

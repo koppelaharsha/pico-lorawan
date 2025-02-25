@@ -125,7 +125,4 @@ target_include_directories(pico_lorawan INTERFACE
 
 target_link_libraries(pico_lorawan INTERFACE pico_loramac_node)
 add_definitions(-Dsx126x)
-# add_subdirectory("examples/default_dev_eui")
-# add_subdirectory("examples/hello_abp")
-# add_subdirectory("examples/hello_otaa")
-add_subdirectory("examples/otaa_temperature_led")
+add_subdirectory("examples")
