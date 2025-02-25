@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 3.12)
 # note: this must happen before project()
 include(pico_sdk_import.cmake)
 
-project(pico_lorwan)
+project(pico_lorawan)
 
 # initialize the Pico SDK
 pico_sdk_init()
@@ -28,29 +28,29 @@ target_sources(pico_loramac_node INTERFACE
     ${LORAMAC_NODE_PATH}/src/apps/LoRaMac/common/LmHandler/packages/LmhpCompliance.c
     ${LORAMAC_NODE_PATH}/src/apps/LoRaMac/common/LmHandler/packages/LmhpFragmentation.c
     ${LORAMAC_NODE_PATH}/src/apps/LoRaMac/common/LmHandler/packages/LmhpRemoteMcastSetup.c
-    ${LORAMAC_NODE_PATH}/src/apps/LoRaMac/common/NvmDataMgmt.c
+    # ${LORAMAC_NODE_PATH}/src/apps/LoRaMac/common/NvmDataMgmt.c
 
     ${LORAMAC_NODE_PATH}/src/boards/mcu/utilities.c
 
-    ${LORAMAC_NODE_PATH}/src/apps/LoRaMac/common/NvmDataMgmt.c
+    # ${LORAMAC_NODE_PATH}/src/apps/LoRaMac/common/NvmDataMgmt.c
 
     ${LORAMAC_NODE_PATH}/src/mac/region/Region.c
-    ${LORAMAC_NODE_PATH}/src/mac/region/RegionAS923.c
-    ${LORAMAC_NODE_PATH}/src/mac/region/RegionAU915.c
-    ${LORAMAC_NODE_PATH}/src/mac/region/RegionBaseUS.c
-    ${LORAMAC_NODE_PATH}/src/mac/region/RegionCN470.c
-    ${LORAMAC_NODE_PATH}/src/mac/region/RegionCN470A20.c
-    ${LORAMAC_NODE_PATH}/src/mac/region/RegionCN470A26.c
-    ${LORAMAC_NODE_PATH}/src/mac/region/RegionCN470B20.c
-    ${LORAMAC_NODE_PATH}/src/mac/region/RegionCN470B26.c
-    ${LORAMAC_NODE_PATH}/src/mac/region/RegionCN779.c
+    # ${LORAMAC_NODE_PATH}/src/mac/region/RegionAS923.c
+    # ${LORAMAC_NODE_PATH}/src/mac/region/RegionAU915.c
+    # ${LORAMAC_NODE_PATH}/src/mac/region/RegionBaseUS.c
+    # ${LORAMAC_NODE_PATH}/src/mac/region/RegionCN470.c
+    # ${LORAMAC_NODE_PATH}/src/mac/region/RegionCN470A20.c
+    # ${LORAMAC_NODE_PATH}/src/mac/region/RegionCN470A26.c
+    # ${LORAMAC_NODE_PATH}/src/mac/region/RegionCN470B20.c
+    # ${LORAMAC_NODE_PATH}/src/mac/region/RegionCN470B26.c
+    # ${LORAMAC_NODE_PATH}/src/mac/region/RegionCN779.c
     ${LORAMAC_NODE_PATH}/src/mac/region/RegionCommon.c
-    ${LORAMAC_NODE_PATH}/src/mac/region/RegionEU433.c
-    ${LORAMAC_NODE_PATH}/src/mac/region/RegionEU868.c
+    # ${LORAMAC_NODE_PATH}/src/mac/region/RegionEU433.c
+    # ${LORAMAC_NODE_PATH}/src/mac/region/RegionEU868.c
     ${LORAMAC_NODE_PATH}/src/mac/region/RegionIN865.c
-    ${LORAMAC_NODE_PATH}/src/mac/region/RegionKR920.c
-    ${LORAMAC_NODE_PATH}/src/mac/region/RegionRU864.c
-    ${LORAMAC_NODE_PATH}/src/mac/region/RegionUS915.c
+    # ${LORAMAC_NODE_PATH}/src/mac/region/RegionKR920.c
+    # ${LORAMAC_NODE_PATH}/src/mac/region/RegionRU864.c
+    # ${LORAMAC_NODE_PATH}/src/mac/region/RegionUS915.c
     ${LORAMAC_NODE_PATH}/src/mac/LoRaMac.c
     ${LORAMAC_NODE_PATH}/src/mac/LoRaMacAdr.c
     ${LORAMAC_NODE_PATH}/src/mac/LoRaMacClassB.c
@@ -101,17 +101,17 @@ target_include_directories(pico_loramac_node INTERFACE
 target_link_libraries(pico_loramac_node INTERFACE pico_stdlib pico_unique_id hardware_spi)
 
 target_compile_definitions(pico_loramac_node INTERFACE -DSOFT_SE)
-target_compile_definitions(pico_loramac_node INTERFACE -DREGION_EU868)
-target_compile_definitions(pico_loramac_node INTERFACE -DREGION_US915)
-target_compile_definitions(pico_loramac_node INTERFACE -DREGION_CN779)
-target_compile_definitions(pico_loramac_node INTERFACE -DREGION_EU433)
-target_compile_definitions(pico_loramac_node INTERFACE -DREGION_AU915)
-target_compile_definitions(pico_loramac_node INTERFACE -DREGION_AS923)
-target_compile_definitions(pico_loramac_node INTERFACE -DREGION_CN470)
-target_compile_definitions(pico_loramac_node INTERFACE -DREGION_KR920)
+# target_compile_definitions(pico_loramac_node INTERFACE -DREGION_EU868)
+# target_compile_definitions(pico_loramac_node INTERFACE -DREGION_US915)
+# target_compile_definitions(pico_loramac_node INTERFACE -DREGION_CN779)
+# target_compile_definitions(pico_loramac_node INTERFACE -DREGION_EU433)
+# target_compile_definitions(pico_loramac_node INTERFACE -DREGION_AU915)
+# target_compile_definitions(pico_loramac_node INTERFACE -DREGION_AS923)
+# target_compile_definitions(pico_loramac_node INTERFACE -DREGION_CN470)
+# target_compile_definitions(pico_loramac_node INTERFACE -DREGION_KR920)
 target_compile_definitions(pico_loramac_node INTERFACE -DREGION_IN865)
-target_compile_definitions(pico_loramac_node INTERFACE -DREGION_RU864)
-target_compile_definitions(pico_loramac_node INTERFACE -DACTIVE_REGION=LORAMAC_REGION_EU868)
+# target_compile_definitions(pico_loramac_node INTERFACE -DREGION_RU864)
+target_compile_definitions(pico_loramac_node INTERFACE -DACTIVE_REGION=LORAMAC_REGION_IN865)
 
 add_library(pico_lorawan INTERFACE)
 

@@ -1,32 +1,38 @@
 # pico-lorawan
-Enable LoRaWAN communications on your [Raspberry Pi Pico](https://www.raspberrypi.org/products/raspberry-pi-pico/) or any RP2040 based board using a [Semtech SX1276 radio module](https://www.semtech.com/apps/product.php?pn=SX1276).
+Enable LoRaWAN communications on [Raspberry Pi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/?variant=raspberry-pi-pico-h) using [Semtech SX1262 radio module](https://www.waveshare.com/wiki/Pico-LoRa-SX1262).
 
 Based on the Semtech's [LoRaWAN end-device stack implementation and example projects](https://github.com/Lora-net/LoRaMac-node).
 
 ## Hardware
 
- * RP2040 board
-   * [Raspberry Pi Pico](https://www.raspberrypi.org/products/raspberry-pi-pico/)
-   * [Adafruit Feather RP2040](https://www.adafruit.com/product/4884)
- * Semtech SX1276 board
-   * [Adafruit RFM95W LoRa Radio Transceiver Breakout - 868 or 915 MHz - RadioFruit](https://www.adafruit.com/product/3072)
-   * [Adafruit LoRa Radio FeatherWing - RFM95W 900 MHz - RadioFruit](https://www.adafruit.com/product/3231) 
+ * [Raspberry Pi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/?variant=raspberry-pi-pico-h)
+ * [WaveShare SX1262 868M](https://www.waveshare.com/wiki/Pico-LoRa-SX1262)
+ * [USB-UART](https://www.waveshare.com/wiki/PL2303_USB_UART_Board_(type_A)_V2)
+
 
 ### Default Pinout
 
-| Raspberry Pi Pico / RP2040 | Semtech SX1276 |
+| Raspberry Pi Pico | WaveShare SX1262 |
 | ----------------- | -------------- |
-| 3.3V | VCC |
+| VSYS | VCC |
 | GND | GND |
-| GPIO 18 | SCK |
-| GPIO 19 | MOSI |
-| GPIO 16 | MISO |
-| GPIO 7 | DIO0 / G0 |
-| GPIO 8 | NSS / CS |
-| GPIO 9 | RESET |
-| GPIO 10 | DIO1 / G1 |
+| GPIO 10 | SCK |
+| GPIO 11 | MOSI |
+| GPIO 12 | MISO |
+| GPIO 15 | RESET |
+| GPIO 3 | NSS / CS |
+| GPIO 2 | BUSY |
+| GPIO 20 | DIO1 |
+
+| Raspberry Pi Pico | USB UART |
+| ----------------- | -------------- |
+| VSYS (PIN 39) | VCC |
+| GND (PIN 38) | GND |
+| GPIO 0 | RXD |
+| GPIO 1 | TXD |
 
 GPIO pins are configurable in examples or API.
+USB-UART jumper set to 5V.
 
 ## Examples
 
@@ -37,28 +43,21 @@ There is a `config.h` file to your ABP or OTAA node configuration for each examp
 ## Cloning
 
 ```sh
-git clone --recurse-submodules https://github.com/sandeepmistry/pico-lorawan.git 
+git clone --recurse-submodules https://github.com/koppelaharsha/pico-lorawan.git 
 ```
 
 ## Building
 
 1. [Set up the Pico C/C++ SDK](https://datasheets.raspberrypi.org/pico/getting-started-with-pico.pdf)
-2. Set `PICO_SDK_PATH`
-```sh
-export PICO_SDK_PATH=/path/to/pico-sdk
-```
-3. Create `build` dir, run `cmake` and `make`:
-```
-mkdir build
-cd build
-cmake .. -DPICO_BOARD=pico
-make
-```
+- For windows, installing via setup file is recommended
+2. Setup SDK
+- For windows
+    - Open `Pico Developer Command Prompt` to set the path
+    - Open vscode from the same terminal
+3. Build the project
 4. Copy example `.uf2` to Pico when in BOOT mode.
 
 ## Acknowledgements
 
-A big thanks to [Alasdair Allan](https://github.com/aallan) for his initial testing of EU868 support!
-
-This project was created on behalf of the [Arm Software Developers](https://developer.arm.com/) team, follow them on Twitter: [@ArmSoftwareDev](https://twitter.com/armsoftwaredev) and YouTube: [Arm Software Developers](https://www.youtube.com/channel/UCHUAckhCfRom2EHDGxwhfOg) for more resources!
+Thanks to [siuwah](https://github.com/siuwahzhong) for contributing to [the original repository](https://github.com/ArmDeveloperEcosystem/lorawan-library-for-pico) to make it work for SX1262 module.
 

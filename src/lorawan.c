@@ -28,6 +28,7 @@
 #include <string.h>
 
 #include "pico/lorawan.h"
+#include "pico/time.h"
 
 #include "board.h"
 #include "rtc-board.h"
@@ -245,9 +246,9 @@ static int lorawan_init(const struct lorawan_sx12xx_settings* sx12xx_settings, L
     SX126x.Spi = spi1_t;
     SpiInit( &SX126x.Spi, SPI_2, RADIO_MOSI, RADIO_MISO, RADIO_SCLK, NC );
 
-    SX126x.Spi.Nss.pin = sx1276_settings->spi.nss;
-    SX126x.Reset.pin = sx1276_settings->reset;
-    SX126x.DIO1.pin = sx1276_settings->dio1;
+    SX126x.Spi.Nss.pin = sx12xx_settings->spi.nss;
+    SX126x.Reset.pin = sx12xx_settings->reset;
+    SX126x.DIO1.pin = sx12xx_settings->dio1;
 
     SX126xIoInit();
 #endif
